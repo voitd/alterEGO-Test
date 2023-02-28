@@ -39,8 +39,8 @@ const { reducer, actions } = createSlice({
     },
     logout: (state: IAuth) => {
       removeItem("token");
+      state.isAuth = true;
       console.log("logout");
-      state.isAuth = false;
       return initialState;
     },
   },

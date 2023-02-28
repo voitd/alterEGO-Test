@@ -1,5 +1,6 @@
 // import { Outlet } from "react-router-dom";
-import Navigation from "../components/Navigation";
+import Nav from "../components/Nav";
+
 interface Props {
   children: JSX.Element | JSX.Element[];
 }
@@ -7,7 +8,7 @@ interface Props {
 export const Layout = ({ children }: Props) => {
   return (
     <main>
-      <Navigation />
+      <Nav />
       {/* <Outlet /> */}
       {children}
     </main>
