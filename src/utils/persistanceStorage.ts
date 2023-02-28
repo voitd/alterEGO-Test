@@ -19,3 +19,19 @@ export const setItem = (key: string, data: any) => {
     console.log("[Local Sotrage] Error saving data", e);
   }
 };
+
+export const removeItem = (key: string) => {
+  try {
+    localStorage.removeItem(key);
+  } catch (e) {
+    console.log("[Local Sotrage] Error remove data", e);
+  }
+};
+
+export const clearItem = () => {
+  try {
+    localStorage.clear();
+  } catch (e) {
+    console.log("[Local Sotrage] Error clearing data", e);
+  }
+};

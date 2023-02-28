@@ -15,8 +15,9 @@ import { CloseRounded, MenuOutlined } from "@mui/icons-material";
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "../store";
-import { login, logout } from "../store/reducers/auth";
+import { login, logout, selectIsAuth } from "../store/reducers/auth";
 import { ICredentials } from "../types/auth";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles(() => ({
   link: { textDecoration: "none", color: "white", fontSize: "20px" },
@@ -34,7 +35,7 @@ const DrawerComponent = () => {
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const isAuth: boolean = true;
+  const isAuth: boolean = useSelector(selectIsAuth);
 
   const handleLogout = () => {
     dispatch(logout());

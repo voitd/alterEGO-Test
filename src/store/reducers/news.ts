@@ -22,6 +22,7 @@ const { getNews } = newsApi.endpoints;
 const { reducer } = createSlice({
   name: "news",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(getNews.matchFulfilled, (state, { payload: data }) => {
       console.warn("data", data);
@@ -30,7 +31,7 @@ const { reducer } = createSlice({
   },
 });
 
-const selectNews = (state: RootState) => state.news.news;
+const selectNews = (state: RootState) => state.news;
 
 export { selectNews };
 
