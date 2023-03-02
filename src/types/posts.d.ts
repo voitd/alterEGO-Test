@@ -1,14 +1,12 @@
 import { type } from "os";
 
-export interface IPost {
+export interface Post {
   userId: string;
   id: string;
   title: string;
   body: string;
 }
 
-export type Post = IPost[];
-
 export interface INewsState {
-  news: Post;
+  news: Post[];
 }

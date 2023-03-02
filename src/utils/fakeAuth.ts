@@ -1,6 +1,6 @@
-import { ICredentials } from "../types/auth";
+import { Credentials } from "../types/auth";
 
-export default (credentials: ICredentials): Promise<string> => {
+export default (credentials: Credentials): Promise<string> => {
   console.log(credentials);
 
   const login: string = "admin";

@@ -8,19 +8,20 @@ import {
   Skeleton,
   Typography,
 } from "@mui/material";
-import { IPost } from "../types/posts";
+import { Post } from "../types/posts";
 import { Link, useNavigate } from "react-router-dom";
 import getRandomImg from "../utils/getRandomImg";
 import { useEffect, useState } from "react";
 
 interface Props {
-  post: IPost;
+  post: Post;
 }
 const useStyles = makeStyles(() => ({
   card: {
     maxWidth: 300,
     margin: "auto",
     transition: "0.3s",
+    cursor: "pointer",
     boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
     "&:hover": {
       boxShadow: "0 16px 70px -12px rgba(0,0,0,0.3)",
@@ -62,15 +63,17 @@ const NewsCard = ({ post }: Props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const classes = useStyles();
-  const [imgUrl, setImgUrl] = useState<string>("");
+  const [imgUrl, setImgUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const randomImg = getRandomImg(post.id);
     setImgUrl(randomImg);
   }, []);
+
   const handleClick = () => {
     navigate(`/news/${post.id}`);
   };
+
   return (
     <Card className={classes.card} onClick={handleClick}>
       {!!imgUrl ? (

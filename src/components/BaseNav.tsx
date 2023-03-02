@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../store";
 import { login, selectIsAuth } from "../store/reducers/auth";
-import { ICredentials } from "../types/auth";
+import { Credentials } from "../types/auth";
 import { BaseLink } from "./UI/BaseLink";
 import { pages } from "../mocks/pages";
 import { UserMenu } from "./UI/UserMenu";
@@ -33,7 +33,7 @@ export const BaseNav = () => {
   const isAuth: boolean = useSelector(selectIsAuth);
 
   const handleLogin = () => {
-    const user: ICredentials = {
+    const user: Credentials = {
       login: "admin",
       password: "1234",
     };

@@ -1,20 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
-import { ICredentials } from "../../types/auth";
+import { Credentials } from "../../types/auth";
 import fakeAuth from "../../utils/fakeAuth";
 import { removeItem, setItem } from "../../utils/persistanceStorage";
 
-interface IUser {
+interface User {
   name?: string;
 }
 
-interface IAuth {
-  user: IUser;
+interface Auth {
+  user: User;
   isAuth: boolean;
   error: string | null;
 }
 
-const initialState: IAuth = {
+const initialState: Auth = {
   user: {},
   isAuth: !!localStorage.getItem("token"),
   error: null,
@@ -24,7 +24,7 @@ const { reducer, actions } = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    login: (state: IAuth, { payload }: PayloadAction<ICredentials>) => {
+    login: (state: Auth, { payload }: PayloadAction<Credentials>) => {
       try {
         const token = fakeAuth(payload);
         setItem("token", token);
@@ -37,10 +37,9 @@ const { reducer, actions } = createSlice({
         };
       }
     },
-    logout: (state: IAuth) => {
+    logout: (state: Auth) => {
       removeItem("token");
       state.isAuth = true;
-      console.log("logout");
       return initialState;
     },
   },

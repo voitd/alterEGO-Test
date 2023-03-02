@@ -16,7 +16,7 @@ import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch } from "../store";
 import { login, logout, selectIsAuth } from "../store/reducers/auth";
-import { ICredentials } from "../types/auth";
+import { Credentials } from "../types/auth";
 import { useSelector } from "react-redux";
 import { MobileMenuItem } from "./UI/MobileMenuItem";
 
@@ -54,7 +54,7 @@ const DrawerComponent = () => {
   };
 
   const handleLogin = () => {
-    const user: ICredentials = {
+    const user: Credentials = {
       login: "admin",
       password: "1234",
     };
