@@ -18,6 +18,6 @@ const getEnvKey = (envKey: string = ""): string => {
 };
 
 const IS_DEVELOPMENT: boolean = getEnvKey("MODE") === "development";
-const AUTH_STORAGE_KEY: string = "isAuth";
+const AUTH_STORAGE_KEY: string = "token";
 
 export { getEnvKey, IS_DEVELOPMENT, AUTH_STORAGE_KEY };
