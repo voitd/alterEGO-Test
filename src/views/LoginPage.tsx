@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import useStyles from "../assets/styles/styles";
 import BaseGrid from "../components/UI/BaseGrid";
 import useAuth from "../hooks/useAuth";
@@ -30,6 +31,7 @@ const LoginPage = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const { doLogin, user } = useAuth();
+  const navigate = useNavigate();
 
   const errorMessage: string = t(
     "The name of the user or the password was not entered correctly.",
@@ -86,6 +88,7 @@ const LoginPage = () => {
       );
 
       doLogin(credentials);
+      navigate("/profile");
     }
   };
 

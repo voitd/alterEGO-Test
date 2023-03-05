@@ -21,8 +21,8 @@ const HomePage = () => {
         height: "100%",
       }}
     >
-      <Paper elevation={3} sx={{ p: 4, mt: 12 }}>
-        {quote && (
+      {quote && (
+        <Paper elevation={3} sx={{ p: 4, mt: 12 }}>
           <Box
             sx={{
               display: "grid",
@@ -47,8 +47,8 @@ const HomePage = () => {
               {quote.author}
             </Typography>
           </Box>
-        )}
-      </Paper>
+        </Paper>
+      )}
     </Container>
   );
 };

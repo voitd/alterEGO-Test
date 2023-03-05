@@ -1,15 +1,25 @@
 import { AccountCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { IconButton, Typography, Menu, MenuItem } from "@mui/material";
+import {
+  IconButton,
+  Typography,
+  Menu,
+  MenuItem,
+  Box,
+  Button,
+} from "@mui/material";
 import { useState, MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import useAuth from "../../hooks/useAuth";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../store/reducers/auth";
 
 export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { doLogout } = useAuth();
 
   const { t } = useTranslation();
+  const user = useSelector(selectUser);
 
   const handleLogout = () => {
     doLogout();
@@ -28,19 +38,23 @@ export const UserMenu = () => {
   ];
 
   return (
-    <div>
-      <IconButton
-        size="large"
-        aria-label="account of current user"
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
+    <Box>
+      <Button
         onClick={handleMenu}
-        color="inherit"
+        size="small"
+        aria-controls="menu"
+        aria-haspopup="true"
+        variant="text"
+        startIcon={<AccountCircle color="primary" />}
+        sx={{ textTransform: "capitalize", px: 2 }}
       >
-        <AccountCircle color="primary" />
-      </IconButton>
+        <Typography noWrap py={2} component="p">
+          {user.username}
+        </Typography>
+      </Button>
+
       <Menu
-        id="menu-appbar"
+        id="menu"
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: "bottom",
@@ -62,6 +76,6 @@ export const UserMenu = () => {
           </MenuItem>
         ))}
       </Menu>
-    </div>
+    </Box>
   );
 };

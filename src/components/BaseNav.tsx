@@ -6,7 +6,7 @@ import { UserMenu } from "./UI/UserMenu";
 import useStyles from "../assets/styles/styles";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "./UI/Dropdown";
+import Dropdown from "./UI/LangDropdown";
 
 export const BaseNav = () => {
   const { t } = useTranslation();
@@ -20,8 +20,15 @@ export const BaseNav = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, mx: 4 }}>
-      <Box className={classes.navlinks} width="90%">
+    <Box
+      sx={{
+        flexGrow: 1,
+        display: { xs: "none", md: "flex" },
+        alignItems: "center",
+        mx: 4,
+      }}
+    >
+      <Box className={classes.navlinks} width="80%">
         {pages.map((page, idx) => {
           if (idx > 0) return;
           return <BaseLink page={page} key={page.id} />;
@@ -30,7 +37,12 @@ export const BaseNav = () => {
       {isAuth ? (
         <UserMenu />
       ) : (
-        <Button variant="outlined" color="primary" onClick={handleLogin}>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={handleLogin}
+          sx={{ maxHeight: 60 }}
+        >
           {t("Login")}
         </Button>
       )}
