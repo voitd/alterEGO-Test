@@ -17,5 +17,5 @@ make install
 ## ⚙️ Run
 
 ```bash
-make dev
+make start
 ```

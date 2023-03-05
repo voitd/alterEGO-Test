@@ -1,6 +1,6 @@
-import { makeStyles } from "tss-react/mui";
+import { makeStyles } from "@mui/styles";
 
-const styles = (theme) => {
+const styles = (theme?: any) => {
   return {
     navlinks: {
       display: "flex",
@@ -113,6 +113,6 @@ const styles = (theme) => {
     },
   };
 };
-
+// @ts-ignore
 const useStyles = makeStyles(styles);
 export default useStyles;
