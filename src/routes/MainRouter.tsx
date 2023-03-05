@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "../utils/ProtectedRoute";
 import Home from "../views/HomePage";
+import LoginPage from "../views/LoginPage";
 import News from "../views/NewsPage";
 import Profile from "../views/ProfilePage";
 import SinglePost from "../views/SinglePost";
@@ -9,6 +10,7 @@ const MainRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="login" element={<LoginPage />} />
       <Route path="news" element={<News />} />
       <Route path="news/:id" element={<SinglePost />} />
       <Route

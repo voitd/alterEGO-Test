@@ -1,43 +1,23 @@
 import { useTranslation } from "react-i18next";
 import { Box, Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "../store";
-import { login, selectIsAuth } from "../store/reducers/auth";
-import { Credentials } from "../types/auth";
 import { BaseLink } from "./UI/BaseLink";
 import { pages } from "../mocks/pages";
 import { UserMenu } from "./UI/UserMenu";
-
-const useStyles = makeStyles(() => ({
-  navlinks: {
-    display: "flex",
-    alignItems: "center",
-    gap: "1rem",
-    justifyContent: "start",
-  },
-  link: {
-    textDecoration: "none",
-    fontSize: "20px",
-    marginLeft: "10px",
-    "&:hover": { color: "primary", borderBottom: "1px solid lightblue" },
-  },
-}));
+import useStyles from "../assets/styles/styles";
+import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export const BaseNav = () => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
+  const { isAuth } = useAuth();
+  useEffect(() => console.log("isAuth", isAuth), [isAuth]);
+  const navigate = useNavigate();
 
   const classes = useStyles();
 
-  const isAuth: boolean = useSelector(selectIsAuth);
-
   const handleLogin = () => {
-    const user: Credentials = {
-      login: "admin",
-      password: "1234",
-    };
-    dispatch(login(user));
+    navigate("/login");
   };
 
   return (

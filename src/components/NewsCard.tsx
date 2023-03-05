@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { makeStyles } from "@mui/styles";
 import {
   Card,
   CardContent,
@@ -12,52 +11,11 @@ import { Post } from "../types/posts";
 import { Link, useNavigate } from "react-router-dom";
 import getRandomImg from "../utils/getRandomImg";
 import { useEffect, useState } from "react";
+import useStyles from "../assets/styles/styles";
 
 interface Props {
   post: Post;
 }
-const useStyles = makeStyles(() => ({
-  card: {
-    maxWidth: 300,
-    margin: "auto",
-    transition: "0.3s",
-    cursor: "pointer",
-    boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
-    "&:hover": {
-      boxShadow: "0 16px 70px -12px rgba(0,0,0,0.3)",
-    },
-  },
-  media: {
-    objectFit: "cover",
-  },
-  content: {
-    textAlign: "left",
-    padding: 12,
-    display: "grid",
-    gap: 2,
-  },
-  divider: {
-    margin: `2px 0`,
-  },
-  avatar: {
-    display: "inline-block",
-    border: "2px solid white",
-    "&:not(:first-of-type)": {
-      marginLeft: 4,
-    },
-  },
-  title: {
-    fontWeight: "bold",
-  },
-  body: {
-    lineHeight: 1.8,
-    display: "-webkit-box",
-    boxOrient: "vertical",
-    lineClamp: 3,
-    wordBreak: "break-all",
-    overflow: "hidden",
-  },
-}));
 
 const NewsCard = ({ post }: Props) => {
   const { t } = useTranslation();

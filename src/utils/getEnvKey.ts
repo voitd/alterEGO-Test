@@ -5,13 +5,11 @@
 // }
 
 const getEnvKey = (envKey: string = ""): string => {
-  console.log("process", import.meta.env[envKey]);
-
   if (!envKey) {
     console.error("Key required");
   }
   if (!import.meta.env[envKey]) {
-    console.error("No key finded");
+    console.error("No key find");
   }
 
   return import.meta.env[envKey];

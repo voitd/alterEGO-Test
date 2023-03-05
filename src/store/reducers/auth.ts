@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
-import { Credentials } from "../../types/auth";
-import fakeAuth from "../../utils/fakeAuth";
-import { removeItem, setItem } from "../../utils/persistanceStorage";
 
 interface User {
+  username?: string;
+  sex?: string;
+  address?: string;
   name?: string;
+  email?: string;
+  birthday?: string;
 }
 
 interface Auth {
@@ -24,12 +26,11 @@ const { reducer, actions } = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    login: (state: Auth, { payload }: PayloadAction<Credentials>) => {
+    login: (state: Auth, { payload }: PayloadAction<User>) => {
       try {
-        const token = fakeAuth(payload);
-        setItem("token", token);
+        // setItem("token", token);
         state.isAuth = true;
-        state.user.name = payload.login;
+        state.user = payload;
       } catch (error: any) {
         return {
           ...initialState,
@@ -38,7 +39,6 @@ const { reducer, actions } = createSlice({
       }
     },
     logout: (state: Auth) => {
-      removeItem("token");
       state.isAuth = true;
       return initialState;
     },

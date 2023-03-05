@@ -1,21 +1,24 @@
-import { Credentials } from "../types/auth";
+import axios from "axios";
+import { getEnvKey } from "./getEnvKey";
 
-export default (credentials: Credentials): Promise<string> => {
-  console.log(credentials);
+enum Roles {
+  admin,
+  user,
+}
 
-  const login: string = "admin";
-  const pass: string = "12345";
-
-  const isAdmin: boolean =
-    credentials?.password == pass && credentials?.login == login;
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (!isAdmin) {
-        return reject("Імʼя користувача або пароль введено неправильно.");
-      } else {
-        return resolve("2342f2f1d131rf12");
-      }
-    }, 250);
+export default async () => {
+  // const isAdmin: boolean = credentials?.login == Roles.admin;
+  const { data } = await axios({
+    method: "get",
+    url: "https://api.api-ninjas.com/v1/randomuser",
+    headers: {
+      "X-Api-Key": getEnvKey("VITE_RANDOM_IMG_API_KEY"),
+    },
   });
+  const user = {
+    ...data,
+    token: "2342f2f1d131rf12",
+    role: Roles.admin,
+  };
+  return user;
 };

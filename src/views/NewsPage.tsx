@@ -1,6 +1,6 @@
 import { useGetPostsByUserIdQuery } from "../services/news";
 import { Post } from "../types/posts";
-import { Grid, Box, Typography, Alert, Snackbar } from "@mui/material";
+import { Grid, Box, Alert, Snackbar } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import BaseGrid from "../components/UI/BaseGrid";
 import NewsCard from "../components/NewsCard";

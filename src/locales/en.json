@@ -3,5 +3,6 @@
   "News": "News",
   "Profile": "Profile",
   "Logout": "Logout",
-  "Read More": "Read More"
+  "Read More": "Read More",
+  "The name of the user or the password was not entered correctly.": "The name of the user or the password was not entered correctly."
 }

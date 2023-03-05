@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import axios from "axios";
-import { getEnvKey } from "../utils/index";
+import { getEnvKey } from "../utils/getEnvKey";
 
 export const axiosApi = axios.create({
   baseURL: getEnvKey("VITE_API_URL"),

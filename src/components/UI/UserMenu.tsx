@@ -2,18 +2,17 @@ import { AccountCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { IconButton, Typography, Menu, MenuItem } from "@mui/material";
 import { useState, MouseEvent } from "react";
-import { useAppDispatch } from "../../store";
-import { logout } from "../../store/reducers/auth";
 import { useTranslation } from "react-i18next";
+import useAuth from "../../hooks/useAuth";
 
 export const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const { doLogout } = useAuth();
 
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    dispatch(logout());
+    doLogout();
   };
 
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
