@@ -1,5 +1,4 @@
 import {
-  Box,
   FormControl,
   InputLabel,
   MenuItem,
@@ -7,28 +6,47 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { resources } from "../../i18n";
 
-export default function UserForm() {
-  const [age, setAge] = useState("");
-  const handleChange = (e: SelectChangeEvent) => {
-    setAge(e.target.value);
+const Dropdown = () => {
+  const { i18n } = useTranslation();
+  const [lang, setLang] = useState(i18n.language);
+  const langs = Object.keys(resources);
+  // useEffect(() => console.log("langs:", i18n.languages), [i18n.languages]);
+
+  const handleChange = ({ target }: SelectChangeEvent) => {
+    const value = target.value;
+    setLang(value);
+    i18n.changeLanguage(value);
   };
+
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        {/* <InputLabel id="demo-simple-select-label">{age}</InputLabel> */}
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <InputLabel id="lang-dropdown" sx={{ textTransform: "capitalize" }}>
+        Lang
+      </InputLabel>
+      <Select
+        labelId="lang-dropdown"
+        id="lang-dropdown"
+        value={lang}
+        label="Lang"
+        sx={{ textTransform: "capitalize" }}
+        onChange={handleChange}
+        color="primary"
+      >
+        {langs.map((lang) => (
+          <MenuItem
+            key={lang}
+            value={lang}
+            sx={{ textTransform: "capitalize" }}
+          >
+            {lang}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
-}
+};
+
+export default Dropdown;

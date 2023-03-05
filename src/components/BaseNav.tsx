@@ -6,12 +6,11 @@ import { UserMenu } from "./UI/UserMenu";
 import useStyles from "../assets/styles/styles";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import Dropdown from "./UI/Dropdown";
 
 export const BaseNav = () => {
   const { t } = useTranslation();
   const { isAuth } = useAuth();
-  useEffect(() => console.log("isAuth", isAuth), [isAuth]);
   const navigate = useNavigate();
 
   const classes = useStyles();
@@ -35,6 +34,7 @@ export const BaseNav = () => {
           {t("Login")}
         </Button>
       )}
+      <Dropdown />
     </Box>
   );
 };

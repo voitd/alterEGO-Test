@@ -139,7 +139,6 @@ const LoginPage = () => {
               }
             />
             <LoadingButton
-              loading={isLoading}
               type="submit"
               fullWidth
               variant="contained"
