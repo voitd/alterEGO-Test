@@ -87,8 +87,8 @@ const LoginPage = () => {
         { login: "", password: "" },
       );
 
-      doLogin(credentials);
       navigate("/profile");
+      doLogin(credentials);
     }
   };
 

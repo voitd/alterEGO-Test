@@ -1,7 +1,6 @@
-import { Theme } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { makeStyles } from "tss-react/mui";
 
-const styles = (theme: Theme) => {
+const styles = (theme) => {
   return {
     navlinks: {
       display: "flex",
@@ -14,8 +13,8 @@ const styles = (theme: Theme) => {
       color: "blue",
       cursor: "pointer",
       position: "absolute",
-      left: theme.spacing(4),
-      top: theme.spacing(2),
+      left: 4,
+      top: 2,
     },
     closeIcon: { color: "white", cursor: "pointer" },
     logo: { flexGrow: "1", cursor: "pointer", color: "white" },
@@ -35,9 +34,9 @@ const styles = (theme: Theme) => {
     },
     content: {
       textAlign: "left",
-      padding: theme.spacing(12),
+      padding: 12,
       display: "grid",
-      gap: theme.spacing(2),
+      gap: 2,
     },
     divider: {
       margin: `2px 0`,
@@ -49,7 +48,7 @@ const styles = (theme: Theme) => {
       justifyContent: "center",
     },
     form: {
-      width: "100%",
+      width: "100%", // Fix IE 11 issue.
       marginTop: theme.spacing(1),
     },
     submit: {
@@ -66,6 +65,7 @@ const styles = (theme: Theme) => {
       backgroundColor: theme.palette.secondary.main,
     },
     paper: {
+      margin: theme.spacing(2, 6),
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -83,7 +83,7 @@ const styles = (theme: Theme) => {
     },
     subtitle: {
       opacity: "0.4",
-      paddingBottom: theme.spacing(6),
+      paddingBottom: "30px",
     },
     largeImage: {
       width: "100%",
@@ -105,7 +105,7 @@ const styles = (theme: Theme) => {
       alignItems: "center",
     },
     testimonialStatement: {
-      paddingBottom: theme.spacing(8),
+      paddingBottom: "25px",
     },
     testimonialPosition: {
       fontSize: "14px",
