@@ -148,7 +148,7 @@ const LoginPage = () => {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              {t("Login")}
             </LoadingButton>
           </form>
         </Paper>
