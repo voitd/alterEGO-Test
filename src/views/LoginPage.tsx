@@ -81,12 +81,12 @@ const LoginPage = () => {
         },
       }));
     });
+
     if (isValidate) {
       const credentials: Credentials = Object.entries(formValues).reduce(
         (acc, [key, value]) => ({ ...acc, [key]: value.value }),
         { login: "", password: "" },
       );
-
       navigate("/profile");
       doLogin(credentials);
     }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getItem } from "./persistanceStorage";
+import useAuth from "../hooks/useAuth";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -8,10 +8,11 @@ interface Props {
 
 const ProtectedRoute = ({ children }: Props): JSX.Element => {
   const navigate = useNavigate();
+  const { isAuth } = useAuth();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const checkUserToken = () => {
-    if (!getItem("token")) {
+    if (!isAuth) {
       setIsLoggedIn(false);
       return navigate("/");
     }

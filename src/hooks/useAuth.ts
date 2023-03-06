@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const useAuth = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const user = {
     login: "admin",
@@ -21,6 +22,7 @@ const useAuth = () => {
       const randomUser = await fakeAuth();
       dispatch(login(randomUser));
       setItem("token", randomUser.token);
+      navigate("/profile");
       return randomUser;
     } catch (err) {
       console.error(err);
