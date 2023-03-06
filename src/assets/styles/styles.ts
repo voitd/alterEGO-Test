@@ -1,6 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
-const styles = (theme?: any) => {
+const useStyles = makeStyles((theme?: any) => {
   return {
     navlinks: {
       display: "flex",
@@ -112,7 +112,6 @@ const styles = (theme?: any) => {
       opacity: "0.6",
     },
   };
-};
-// @ts-ignore
-const useStyles = makeStyles(styles);
+});
+
 export default useStyles;
